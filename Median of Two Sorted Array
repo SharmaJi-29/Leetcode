@@ -1,0 +1,20 @@
+class Solution(object):
+    def findMedianSortedArrays(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+        """
+        #joins two lists
+        merged = nums1 + nums2 
+        #sort the merged list
+        merged.sort()
+
+        #for odd length of list
+        if len(merged) % 2 == 1:
+            return float(merged[len(merged) // 2])
+        else:
+            #two middle element are found
+            first = merged[len(merged)//2]
+            second = merged[(len(merged)//2) - 1]
+            return (float(first)+ float(second))/2.0
