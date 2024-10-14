@@ -1,0 +1,38 @@
+'''You are given a 0-indexed integer array nums and an integer k. You have a starting score of 0.
+
+In one operation:
+
+choose an index i such that 0 <= i < nums.length,
+increase your score by nums[i], and
+replace nums[i] with ceil(nums[i] / 3).
+Return the maximum possible score you can attain after applying exactly k operations.
+
+The ceiling function ceil(val) is the least integer greater than or equal to val.
+'''
+
+
+# code 
+
+import heapq
+import math
+
+class Solution:
+    def maxKelements(self, nums: List[int], k: int) -> int:
+        # Max-heap (we negate values to simulate max-heap behavior)
+        maxheap = [-x for x in nums]
+        heapq.heapify(maxheap)
+        
+        sum = 0
+        
+        # Perform k operations
+        for _ in range(k):
+            # Get the largest element (by negating to retrieve the max)
+            max_value = -heapq.heappop(maxheap)
+            
+            # Add to the score
+            sum += max_value
+            
+            # Replace the element with ceil(maxVal / 3)
+            heapq.heappush(maxheap, -math.ceil(max_value / 3))
+        
+        return sum
