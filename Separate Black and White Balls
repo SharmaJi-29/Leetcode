@@ -1,0 +1,22 @@
+''' There are n balls on a table, each ball has a color black or white.
+
+You are given a 0-indexed binary string s of length n, where 1 and 0 represent black and white balls, respectively.
+
+In each step, you can choose two adjacent balls and swap them.
+
+Return the minimum number of steps to group all the black balls to the right and all the white balls to the left'''
+
+
+class Solution(object):
+    def minimumSteps(self, s):
+        total_swap, black_count = 0, 0 #Tracks the number of black balls
+        
+        # Traverse through the string
+        for char in s:
+            #White ball encountered, add the number of black balls on its lef
+            if char == "0":
+                total_swap += black_count
+            else:
+                #Black ball encountered, increment the black ball count
+                black_count += 1
+        return total_swap
