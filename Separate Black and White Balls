@@ -6,7 +6,7 @@ In each step, you can choose two adjacent balls and swap them.
 
 Return the minimum number of steps to group all the black balls to the right and all the white balls to the left'''
 
-
+#code
 class Solution(object):
     def minimumSteps(self, s):
         total_swap, black_count = 0, 0 #Tracks the number of black balls
